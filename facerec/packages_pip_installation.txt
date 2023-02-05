@@ -2,7 +2,7 @@
 pip install opencv-python
 
 //install keras (2.11.0) that uses TensorFlow as a backend
-pip install keras
+pip install keras (optional) not necessary
 
 //install tensorflow cpu
 pip install tensorflow-cpu
