@@ -1,0 +1,68 @@
+//install opencv (pip pkg version 4.5.2.52)
+pip install opencv-python
+
+//install keras (2.11.0) that uses TensorFlow as a backend
+pip install keras (optional) not necessary
+
+//install tensorflow cpu
+pip install tensorflow-cpu
+
+//install keras-vggface
+pip install git+https://github.com/rcmalli/keras-vggface.git
+pip3.8 install Keras-Applications
+
+//ISSUE https://github.com/rcmalli/keras-vggface/issues/73
+//change in Python\Python38\lib\site-packages\keras_vggface\models.py
+#from keras.engine.topology import get_source_inputs
+from keras.utils.layer_utils import get_source_inputs
+
+//install sinricpro (2.6.3)
+pip install sinricpro --user
+
+
+
+
+
+=============== INSTALL ON RASPBERRY 4 bullseye 64bit ===============
+//downgrade your Protobuf to version 3.20 if you have 4.21 installed
+sudo apt-get install git python3-pip
+pip3 list | grep protobuf
+sudo -H pip3 install --upgrade protobuf==3.20.0
+//Method 1
+# download tensorflow io gcs
+git clone -b v0.23.1 --depth=1 --recursive https://github.com/tensorflow/io.git
+cd io
+python3 setup.py -q bdist_wheel --project tensorflow_io_gcs_filesystem
+cd dist
+sudo -H pip3 install tensorflow_io_gcs_filesystem-0.23.1-cp39-cp39-linux_aarch64.whl
+cd ~
+//Install tensorflow 2.10.0
+sudo -H pip3 install gdown
+gdown https://drive.google.com/uc?id=1G2P-FaHAXJ-UuQAQn_0SYjNwBu0aShpd
+sudo -H pip3 install tensorflow-2.10.0-cp39-cp39-linux_aarch64.whl
+//Pillow
+pip3 install Pillow
+sudo apt-get install python3-pil.imagetk
+
+//OpenCV 4.5.5
+# check your memory first
+$ free -m
+# you need at least a total of 6.5 GB!
+# if not, enlarge your swap space as explained in the guide:
+
+$ sudo nano /etc/dphys-swapfile
+
+set CONF_SWAPSIZE=4096 with the Nano text editor
+
+$ sudo reboot
+
+# to get the current status
+$ sudo rpi-eeprom-update
+# if needed, to update the firmware
+$ sudo rpi-eeprom-update -a
+$ sudo reboot
+
+
+$ wget https://github.com/Qengineering/Install-OpenCV-Raspberry-Pi-64-bits/raw/main/OpenCV-4-5-5.sh
+$ sudo chmod 755 ./OpenCV-4-5-5.sh
+$ ./OpenCV-4-5-5.sh
